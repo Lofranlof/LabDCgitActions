@@ -24,6 +24,26 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
       
+    - name: setup-docker
+      # You may pin to the exact commit or the version.
+      # uses: docker-practice/actions-setup-docker@51fd5009666ea5e3382fe125abf5d73d31386b59
+      uses: docker-practice/actions-setup-docker@1.0.8
+      with:
+        # Docker Version
+        docker_version: # optional, default is 20.10
+        # Docker nightly Version
+        docker_nightly_version: # optional, default is snapshot-20210202
+        # Docker Channel
+        docker_channel: # optional, default is stable
+        # Enable Buildx
+        docker_buildx: # optional, default is true
+        # docker cli experimental
+        docker_cli_experimental: # optional, default is enabled
+        # /etc/docker/daemon.json
+        docker_daemon_json: # optional, default is {
+      "experimental": true
+    }
+    
     - name: Build and push Docker images
       uses: mr-smithers-excellent/docker-build-push@v4
       with:

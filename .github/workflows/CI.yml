@@ -21,10 +21,15 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: run-vcpkg
-      uses: Lofranlof/run-vcpkg@v10.0
-      
-      
+
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.0
+      with:
+        # Artifact name
+        name: version
+        # Destination path
+        path: D:\Downloads
+
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: nuget restore ${{env.SOLUTION_FILE_PATH}}

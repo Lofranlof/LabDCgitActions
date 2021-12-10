@@ -11,5 +11,4 @@ jobs:
     steps:
       - uses: "ncipollo/release-action@v1"
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false

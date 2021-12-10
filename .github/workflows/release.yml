@@ -2,15 +2,14 @@ name: Release
 
 on:
   push:
-    tags:
-      -"v*"
+    branches: [ master ]
     
 jobs:
   release:
     name: "Release"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: "ncipollo/release-action@v1"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
